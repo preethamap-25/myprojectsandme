@@ -1,41 +1,20 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    "./app/**/*.{js,jsx}",
-    "./components/**/*.{js,jsx}",
-  ],
+  content: ["./app/**/*.{js,jsx}", "./components/**/*.{js,jsx}"],
   theme: {
     extend: {
       colors: {
-        bg: "#0B0F14",
-        surface: "#10161D",
-        surface2: "#161F2A",
-        line: "#232E39",
-        linesoft: "#1A232C",
-        ink: "#E7EDF3",
-        dim: "#8FA0AC",
-        faint: "#5B6B78",
-        accent: "#FF8A3D",
-        accent2: "#4FD1C5",
+        paper: "#F6F3EC",
+        paper2: "#EFEAE0",
+        ink: "#1C1C1A",
+        inkdim: "#55524A",
+        inkfaint: "#8C8778",
+        rule: "#D8D2C4",
+        accent: "#A3291B",
       },
       fontFamily: {
-        mono: ['"IBM Plex Mono"', "monospace"],
-        sans: ['"IBM Plex Sans"', "sans-serif"],
-      },
-      keyframes: {
-        flow: { to: { strokeDashoffset: "-120" } },
-        pulse2: { "0%,100%": { opacity: 1 }, "50%": { opacity: 0.35 } },
-      },
-      animation: {
-        flow: "flow 2.6s linear infinite",
-        "flow-slow": "flow 3.6s linear infinite",
-        pulse2: "pulse2 2.4s ease-in-out infinite",
-      },
-      backgroundImage: {
-        grid: "linear-gradient(#1A232C 1px, transparent 1px), linear-gradient(90deg, #1A232C 1px, transparent 1px)",
-      },
-      backgroundSize: {
-        grid: "48px 48px",
+        serif: ['"Source Serif 4"', "serif"],
+        mono: ['"JetBrains Mono"', "monospace"],
       },
     },
   },

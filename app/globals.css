@@ -1,24 +1,112 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-html {
-  scroll-behavior: smooth;
+html { scroll-behavior: smooth; }
+body { background-color: #F6F3EC; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition-duration: 0.001ms !important; }
 }
 
-body {
-  background-color: #0B0F14;
+/* ---------- Intro convergence loader ---------- */
+.intro-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #F6F3EC;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.intro-disc {
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  background: conic-gradient(#1C1C1A 0deg 180deg, #F6F3EC 180deg 360deg);
+  animation: introSpinCW 3.2s linear infinite;
+  transition: width 1.1s cubic-bezier(.6,.05,.3,1), height 1.1s cubic-bezier(.6,.05,.3,1), opacity 0.8s ease;
+}
+
+.intro-disc--a {
+  z-index: 1;
+}
+
+.intro-disc--b {
+  width: 180px;
+  height: 180px;
+  background: conic-gradient(#F6F3EC 0deg 180deg, #1C1C1A 180deg 360deg);
+  animation: introSpinCCW 2.4s linear infinite;
+  opacity: 0.85;
+}
+
+.intro-disc--converge {
+  width: 0px !important;
+  height: 0px !important;
+  opacity: 0;
+}
+
+@keyframes introSpinCW {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes introSpinCCW {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(-360deg); }
+}
+
+.intro-ball {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #1C1C1A;
+  box-shadow: 0 0 0 4px rgba(28,28,26,0.08);
+  transition: transform 1.1s cubic-bezier(.6,.05,.2,1), opacity 0.9s ease 0.25s;
+  z-index: 2;
+}
+
+.intro-ball--zoom {
+  transform: scale(70);
+  opacity: 0;
+}
+
+.intro-caption {
+  position: absolute;
+  bottom: 38%;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #8C8778;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.intro-caption--visible {
+  opacity: 1;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-  * {
-    animation-duration: 0.001ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.001ms !important;
-  }
+  .intro-disc, .intro-ball { animation: none !important; }
+  .intro-overlay, .intro-disc, .intro-ball, .intro-caption { transition: opacity 0.3s ease !important; }
+}
+
+/* ---------- Scroll reveal ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(.2,.7,.2,1);
+}
+
+.reveal--visible {
+  opacity: 1;
+  transform: translateY(0);
 }

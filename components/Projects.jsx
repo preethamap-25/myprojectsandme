@@ -1,53 +1,35 @@
-import Eyebrow from "./Eyebrow";
+import SectionNumber from "./SectionNumber";
 import { projects } from "../lib/content";
 
 export default function Projects() {
   return (
-    <section id="projects" className="py-20 border-b border-line">
-      <div className="max-w-[1080px] mx-auto px-7">
-        <div className="max-w-[62ch] mb-11">
-          <Eyebrow>PROJECTS</Eyebrow>
-          <h2 className="font-mono font-semibold text-[clamp(24px,3vw,32px)] mb-3.5">
-            Things I&apos;ve shipped end to end
-          </h2>
-          <p className="text-dim text-[15.5px]">
-            Each one covers the full path — model or pipeline, backend, and a working interface someone
-            else could actually use.
-          </p>
-        </div>
+    <section id="projects" className="py-16 border-b border-rule">
+      <div className="max-w-[880px] mx-auto px-7">
+        <SectionNumber n="03" label="Case studies" />
 
-        <div className="flex flex-col gap-px bg-line border border-line rounded-sm overflow-hidden">
-          {projects.map((p) => (
-            <div key={p.name} className="bg-surface p-8 grid md:grid-cols-[220px_1fr] gap-8">
-              <div className="font-mono">
-                <div className="text-[18px] text-ink mb-2">{p.name}</div>
-                <div className="text-[12px] text-faint mb-3.5">{p.time}</div>
-                {p.link && (
-                  <a
-                    href={p.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-[12.5px] text-accent hover:underline inline-flex items-center gap-1.5"
-                  >
-                    View on GitHub →
-                  </a>
-                )}
+        <div className="space-y-12">
+          {projects.map((p, i) => (
+            <div key={p.name} className="grid md:grid-cols-[64px_1fr] gap-4 transition-transform duration-300 hover:translate-x-1.5">
+              <div className="font-mono text-[12px] text-inkfaint">
+                Case {String(i + 1).padStart(2, "0")}
               </div>
               <div>
-                <ul className="list-disc pl-[18px] text-dim text-[14.5px] space-y-2 mb-4">
-                  {p.bullets.map((b, i) => (
-                    <li key={i}>{b}</li>
-                  ))}
+                <div className="flex items-baseline gap-2 mb-1">
+                  <h3 className="font-serif font-semibold text-[19px] text-ink">{p.name}</h3>
+                  {p.link && (
+                    <sup className="font-mono text-[11px] text-accent">
+                      <a href={p.link} target="_blank" rel="noopener noreferrer" className="transition-opacity hover:opacity-70">[{i + 1}]</a>
+                    </sup>
+                  )}
+                </div>
+                <div className="font-mono text-[11.5px] text-inkfaint mb-3">{p.time}</div>
+
+                <ul className="font-serif text-[15.5px] leading-[1.7] text-inkdim list-disc pl-5 space-y-1.5 mb-3">
+                  {p.bullets.map((b, bi) => <li key={bi}>{b}</li>)}
                 </ul>
-                <div className="flex flex-wrap gap-1.5">
-                  {p.stack.map((s) => (
-                    <span
-                      key={s}
-                      className="font-mono text-[11.5px] text-faint border border-line rounded-full px-2 py-1"
-                    >
-                      {s}
-                    </span>
-                  ))}
+
+                <div className="font-mono text-[12px] text-inkfaint">
+                  Keywords: {p.stack.join(", ")}
                 </div>
               </div>
             </div>
