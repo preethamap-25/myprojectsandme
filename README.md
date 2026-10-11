@@ -7,7 +7,7 @@ A production-style Next.js 14 (App Router) build of the portfolio.
 npm install
 npm run dev
 ```
-Visit portfolio-iota-five-92.vercel.app
+Visit http://localhost:3000
 
 ## Build for production
 ```bash
@@ -25,3 +25,7 @@ app/            # App Router: layout, page, global styles
 components/     # All UI sections (Hero, About, Skills, Projects, Track, Contact...)
 lib/content.js  # All portfolio content — edit this file to update text/projects
 ```
+
+## Before you publish
+- Update the LinkedIn URL in `lib/content.js` (`contactLinks`).
+- Swap or trim the project list in `lib/content.js` to match what you want to show.
