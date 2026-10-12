@@ -13,7 +13,7 @@ export default function Hero() {
         </h1>
 
         <div className="font-mono text-[13px] text-inkdim mb-10">
-          B.Tech CSE (AI &amp; ML), KMIT Hyderabad — 2022–2026 · Open to work — Hyderabad / Bangalore
+          B.Tech CSE (AI &amp; ML), KMIT Hyderabad — 2022–2026 · Open to work — Hyderabad / Bangalore / Remote
         </div>
 
         <div className="border border-rule bg-paper2 p-7 md:p-8">

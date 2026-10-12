@@ -7,7 +7,7 @@ A production-style Next.js 14 (App Router) build of the portfolio.
 npm install
 npm run dev
 ```
-Visit https://preethamap-25.github.io/portfolio/
+Visit https://preethamap-25.github.io/myprojectsandme/
 
 ## Build for production
 ```bash

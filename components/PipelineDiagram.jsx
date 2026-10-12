@@ -1,7 +1,7 @@
 export default function PipelineDiagram() {
   return (
     <svg
-      viewBox="0 0 1000 150"
+      viewBox="0 -50 1000 180"
       className="w-full h-auto"
       xmlns="http://www.w3.org/2000/svg"
       role="img"
@@ -26,21 +26,28 @@ export default function PipelineDiagram() {
         [620, 40, "FastAPI"],
         [620, 110, "MongoDB"],
         [800, 75, "Product"],
-      ].map(([x, y, label]) => (
-        <g key={label}>
-          <circle cx={x} cy={y} r="4" fill="#1C1C1A" />
-          <text
-            x={x}
-            y={y - 12}
-            textAnchor="middle"
-            fontFamily="JetBrains Mono, monospace"
-            fontSize="12"
-            fill="#1C1C1A"
-          >
-            {label}
-          </text>
-        </g>
-      ))}
+      ].map(([x, y, label]) => {
+        const labelY =
+          label === "Agent" || label === "Product"
+            ? y - 16
+            : y - 12;
+
+        return (
+          <g key={label}>
+            <circle cx={x} cy={y} r="4" fill="#1C1C1A" />
+            <text
+              x={x}
+              y={labelY}
+              textAnchor="middle"
+              fontFamily="JetBrains Mono, monospace"
+              fontSize="12"
+              fill="#1C1C1A"
+            >
+              {label}
+            </text>
+          </g>
+        );
+      })}
     </svg>
   );
 }

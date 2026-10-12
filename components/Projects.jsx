@@ -11,7 +11,7 @@ export default function Projects() {
           {projects.map((p, i) => (
             <div key={p.name} className="grid md:grid-cols-[64px_1fr] gap-4 transition-transform duration-300 hover:translate-x-1.5">
               <div className="font-mono text-[12px] text-inkfaint">
-                Case {String(i + 1).padStart(2, "0")}
+                Project {String(i + 1).padStart(2, "0")}
               </div>
               <div>
                 <div className="flex items-baseline gap-2 mb-1">
@@ -29,7 +29,7 @@ export default function Projects() {
                 </ul>
 
                 <div className="font-mono text-[12px] text-inkfaint">
-                  Keywords: {p.stack.join(", ")}
+                  Tech Stack: {p.stack.join(", ")}
                 </div>
               </div>
             </div>
